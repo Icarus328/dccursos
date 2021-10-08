@@ -1,0 +1,37 @@
+<h1>
+    <%= @aula.name %>
+</h1>
+
+<p>
+    <strong>Duration: </strong>
+    <%= @aula.duration %>
+</p>
+
+<p>
+    <strong>Theme: </strong>
+    <%= @aula.theme %>
+</p>
+
+<p>
+    <strong>Date: </strong>
+    <%= @aula.date %>
+</p>
+
+<p>
+    <strong>Number: </strong>
+    <%= @aula.number %>
+</p>
+
+<p>
+    <strong>Associated video: </strong>
+    <%= @aula.associated_video %>
+</p>
+
+<p>
+    <strong>Associated curso: </strong>
+    <%= @aula.associatedcurso %>
+</p>
+
+<%= link_to 'Go back', aulas_index_path %>
+<%= link_to 'Edit aula', aulas_edit_path(:id => @aula.id) %>
+<%= link_to 'Delete aula', aulas_delete_path(:id => @aula.id), method: :delete %>

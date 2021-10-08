@@ -1,0 +1,18 @@
+<h1>Edit your review</h1>
+
+<%= form_with(model: @review, method: :patch, url: reviews_update_path(:id => @review.id)) do |form| %>
+
+    
+    <div>
+        <%= form.label :Description %>
+        <%= form.text_field :description %>
+    </div>
+
+    <div>
+        <%= form.label :Punctuation %>
+        <%= form.number_field :punctuation %>
+    </div>
+
+    
+<% end %>
+<%= link_to 'Go back', reviews_show_path(:id => @review.id) %>

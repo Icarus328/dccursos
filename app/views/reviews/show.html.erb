@@ -1,0 +1,19 @@
+<h1>
+    <strong>Curso asociado: </strong>
+    <%= @review.cursoasociado %>
+</h1>
+
+<p>
+    <strong>Description: </strong>
+    <%= @review.description %>
+</p>
+
+<p>
+    <strong>Punctuation: </strong>
+    <%= @review.punctuation %>
+</p>
+
+
+<%= link_to 'Go back', reviews_index_path %>
+<%= link_to 'Edit review', reviews_edit_path(:id => @review.id) %>
+<%= link_to 'Delete review', reviews_delete_path(:id => @review.id), method: :delete %>

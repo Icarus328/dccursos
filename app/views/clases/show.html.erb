@@ -1,0 +1,34 @@
+<h1>Clases#show</h1>
+
+<h1>
+    <%= @clase.name %>
+</h1>
+
+<p>
+    <strong>Duration: </strong>
+    <%= @clase.duration %>
+</p>
+
+<p>
+    <strong>Theme: </strong>
+    <%= @clase.theme %>
+</p>
+
+<p>
+    <strong>Date: </strong>
+    <%= @clase.date %>
+</p>
+
+<p>
+    <strong>Number: </strong>
+    <%= @clase.number %>
+</p>
+
+<p>
+    <strong>Associated_video: </strong>
+    <%= @clase.associated_video %>
+</p>
+
+<%= link_to 'Go back', clases_index_path %>
+<%= link_to 'Edit curso', clases_edit_path(:id => @clase.id) %>
+<%= link_to 'Delete curso', clases_delete_path(:id => @clase.id), method: :delete %>

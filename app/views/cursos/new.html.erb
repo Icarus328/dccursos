@@ -1,0 +1,35 @@
+<h1>Upload a new curso</h1>
+
+<%= form_with(model: @curso, method: :post) do |form| %>
+
+    <div>
+        <%= form.label :Name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div>
+        <%= form.label :Description %>
+        <%= form.text_field :description %>
+    </div>
+
+    <div>
+        <%= form.label :Duration %>
+        <%= form.text_field :duration %>
+    </div>
+
+    <div>
+        <%= form.label :Teacher %>
+        <%= form.text_field :teacher %>
+    </div>
+
+    <div>
+        <%= form.label :Price %>
+        <%= form.text_field :price %>
+    </div>
+
+    <div>
+        <%= form.submit 'Create curso' %>
+    </div>
+
+<% end %>
+<%= link_to 'Go back', cursos_index_path %>

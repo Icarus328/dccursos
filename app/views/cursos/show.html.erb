@@ -1,0 +1,27 @@
+<h1>
+    <%= @curso.name %>
+</h1>
+
+<p>
+    <strong>Description: </strong>
+    <%= @curso.description %>
+</p>
+
+<p>
+    <strong>Duration: </strong>
+    <%= @curso.duration %>
+</p>
+
+<p>
+    <strong>Teacher: </strong>
+    <%= @curso.teacher %>
+</p>
+
+<p>
+    <strong>Price: </strong>
+    <%= @curso.price %>
+</p>
+
+<%= link_to 'Go back', cursos_index_path %>
+<%= link_to 'Edit curso', cursos_edit_path(:id => @curso.id) %>
+<%= link_to 'Delete curso', cursos_delete_path(:id => @curso.id), method: :delete %>

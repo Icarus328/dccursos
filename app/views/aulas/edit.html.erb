@@ -1,0 +1,46 @@
+<h1>Edit your aula</h1>
+
+<%= form_with(model: @aula, method: :patch, url: aulas_update_path(:id => @aula.id)) do |form| %>
+
+    <div>
+        <%= form.label :Name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div>
+        <%= form.label :Duration %>
+        <%= form.text_field :duration %>
+    </div>
+
+    <div>
+        <%= form.label :Theme %>
+        <%= form.text_field :theme %>
+    </div>
+
+    <div>
+        <%= form.label :Date %>
+        <%= form.text_field :date %>
+    </div>
+
+    <div>
+        <%= form.label :Number %>
+        <%= form.text_field :number %>
+    </div>
+
+    <div>
+        <%= form.label :Associated_video %>
+        <%= form.text_field :associated_video %>
+    </div>
+
+    <div>
+        <%= form.label :Associatedcurso %>
+        <%= form.text_field :associatedcurso %>
+    </div>
+
+
+    <div>
+        <%= form.submit 'Edit aula' %>
+    </div>
+
+<% end %>
+<%= link_to 'Go back', aulas_show_path(:id => @aula.id) %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  duracion: 1
+  curso_asociado: MyString
+  tematica: MyString
+  fecha: 
+  numero: 1
+  nombre: MyString
+  video_asociado: 1
+
+two:
+  duracion: 1
+  curso_asociado: MyString
+  tematica: MyString
+  fecha: 
+  numero: 1
+  nombre: MyString
+  video_asociado: 1

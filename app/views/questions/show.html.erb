@@ -1,0 +1,22 @@
+<h1>
+    <%= @question.title %>
+</h1>
+
+<p>
+    <strong>Description: </strong>
+    <%= @question.description %>
+</p>
+
+<p>
+    <strong>Course: </strong>
+    <%= @question.course %>
+</p>
+
+<p>
+    <strong>Publication date: </strong>
+    <%= @question.publication_date %>
+</p>
+
+<%= link_to 'Go back', questions_index_path %>
+<%= link_to 'Edit question', questions_edit_path(:id => @question.id) %>
+<%= link_to 'Delete question', questions_delete_path(:id => @question.id), method: :delete %>

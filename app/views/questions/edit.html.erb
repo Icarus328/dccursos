@@ -1,0 +1,32 @@
+<h1>Edit your question</h1>
+
+<%= form_with(model: @question, method: :patch, url: questions_update_path(:id => @question.id)) do |form| %>
+
+    <div>
+        <%= form.label :Title %>
+        <%= form.text_field :title %>
+    </div>
+
+    
+
+    <div>
+        <%= form.label :Description %>
+        <%= form.text_field :description %>
+    </div>
+
+    <div>
+        <%= form.label :Course %>
+        <%= form.text_field :course %>
+    </div>
+
+    <div>
+        <%= form.label :Publication_date %>
+        <%= form.text_field :publication_date %>
+    </div>
+
+    <div>
+        <%= form.submit 'Edit question' %>
+    </div>
+
+<% end %>
+<%= link_to 'Go back', questions_show_path(:id => @question.id) %>
