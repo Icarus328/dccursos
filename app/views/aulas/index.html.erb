@@ -1,36 +1,37 @@
+
 <h1>AULAS</h1>
 
 <%= notice %>
+<%if current_user%>
 
-<table align='center'>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Duration</th>
-            <th>Theme</th>
-            <th>Date</th>
-            <th>Number</th>
-            <th>Associated video</th>
-            <th>Associated curso</th>
-            <th colspan='3'></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @aulas.each do |aula| %>
+    <table align='center'>
+        <thead>
             <tr>
-                <td><%= aula.name %></td>
-                <td><%= aula.duration %></td>
-                <td><%= aula.theme %></td>
-                <td><%= aula.date %></td>
-                <td><%= aula.number %></td>
-                <td><%= aula.associated_video %></td>
-                <td><%= aula.associatedcurso %></td>
-                <td><%= link_to 'View details', aulas_show_path(:id => aula.id) %></td>
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Theme</th>
+                <th>Date</th>
+                <th>Number</th>
+                <th>Associated curso</th>
+                <th colspan='3'></th>
             </tr>
-        <% end %>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        
+            <% @aulas.each do |aula| %>
+                <tr>
+                    <td><%= aula.name %></td>
+                    <td><%= aula.duration %></td>
+                    <td><%= aula.theme %></td>
+                    <td><%= aula.date %></td>
+                    <td><%= aula.number %></td>
+                    <td><%= aula.associatedcurso %></td>
+                    <td><%= link_to 'View details', aulas_show_path(:id => aula.id) %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 
-<%= link_to 'Upload a new aula', aulas_new_path %>
-<%= link_to 'Go back', cursos_index_path %>
-
+    <%= link_to 'Upload a new aula', aulas_new_path %>
+    <%= link_to 'Go back to cursos index', cursos_index_path %>
+<% end %>

@@ -1,0 +1,28 @@
+<h1>Upload a new answer</h1>
+
+<%= notice %>
+<%if current_user%>
+    <%= form_with(model: @answer, method: :post) do |form| %>
+
+        <div>
+            <%= form.label :Content %>
+            <%= form.text_field :content %>
+        </div>
+
+        <div>
+            <%= form.label :associated_question %>
+            <%= form.text_field :associated_question %>
+        </div>
+
+        <div>
+            <%= form.submit 'Create answer' %>
+        </div>
+        
+        <div>
+            <%= form.number_field :user_id, id: :answer_user_id,
+            class:"form-control", value: current_user.id, type: :hidden%>
+        </div>
+
+    <% end %>
+    <%= link_to 'Go back', answers_index_path %>
+<%end%>

@@ -1,0 +1,25 @@
+<h1>Edit your answer</h1>
+
+<%= notice %>
+<%if current_user%>
+    <%= form_with(model: @answer, method: :patch, url: answers_update_path(:id => @answer.id)) do |form| %>
+
+        <div>
+            <%= form.label :Content %>
+            <%= form.text_field :content %>
+        </div>
+
+        
+
+        <div>
+            <%= form.label :Associated_question %>
+            <%= form.text_field :associated_question %>
+        </div>
+
+        <div>
+            <%= form.submit 'Edit answer' %>
+        </div>
+
+    <% end %>
+    <%= link_to 'Go back', answers_show_path(:id => @answer.id) %>
+<%end%>

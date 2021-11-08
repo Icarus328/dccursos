@@ -1,0 +1,25 @@
+<h1>
+    <%= @user.username %>
+</h1>
+
+<p>
+    <strong>Email: </strong>
+    <%= @user.email %>
+</p>
+
+<p>
+    <strong>Edad: </strong>
+    <%= @user.age %>
+</p>
+
+<p>
+   <strong>Avatar </strong>
+   <% if @user.avatar %>
+    <%= image_tag @user.avatar, size: "150" %>
+ <% end %>
+
+</p>
+<% link_to 'Go back', cursos_index_path %>
+<%= link_to 'Edit profile', edit_user_registration_path %>
+<%= link_to 'Volver a la pagina anterior', mainpage_index_path%>
+

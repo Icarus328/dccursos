@@ -4,13 +4,18 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        @reviews_params = params.require(:review).permit(:description, :punctuation, :cursoasociado)
-      @review = Review.create(@reviews_params)
-      if @review.save
-          redirect_to reviews_index_path, notice: 'review successfully created'
-      else
-          redirect_to reviews_index_path, notice: 'Error while creating the review'
-      end
+        @reviews_params = params.require(:review).permit(:description, :punctuation, 
+                                                         :cursoasociado, :user_id)
+        @review = Review.create(@reviews_params)
+        if @review.save
+            redirect_to reviews_index_path, notice: 'Review successfully created'
+        else
+            redirect_to reviews_index_path, notice: 'Error while creating the review. Verify that
+             all fields are completed and
+            the description and curso asociado correspond to strings and
+            the punctuation corresponds to an integer. If the error persists please contact an 
+            admin'
+        end
     end
 
     def index
@@ -27,17 +32,22 @@ class ReviewsController < ApplicationController
 
     def update
         @review = Review.find(params[:id])
-      @reviews_new_params = params.require(:review).permit(:description, :punctuation)
-      if @review.update(@reviews_new_params)
-          redirect_to reviews_index_path, notice: 'review edited correctly'
-      else
-          redirect_to reviews_index_path, notice: 'Error while editing the review'
-      end
+        @reviews_new_params = params.require(:review).permit(:description, :punctuation, 
+                                                             :cursoasociado, :user_id)
+        if @review.update(@reviews_new_params)
+            redirect_to reviews_index_path, notice: 'Review edited correctly'
+        else
+            redirect_to reviews_index_path, notice: 'Error while editing the review. Verify that 
+            all fields are completed and
+            the description and curso asociado correspond to strings and
+            the punctuation corresponds to an integer. If the error persists please contact an 
+            admin'
+        end
     end
 
     def delete
         @review = Review.find(params[:id])
-      @review.destroy
-      redirect_to reviews_index_path, notice: 'review nicely destroyed'
+        @review.destroy
+        redirect_to reviews_index_path, notice: 'Review nicely destroyed'
     end
 end

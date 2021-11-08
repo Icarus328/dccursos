@@ -18,6 +18,11 @@
     <%= f.number_field :age, autofocus: true, autocomplete: "age" %>
   </div>
 
+  <div class="field">
+    <%= f.label :avatar_url%><br />
+    <%= f.text_field :avatar, autofocus: true, autocomplete: "avatar" %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

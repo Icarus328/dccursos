@@ -1,35 +1,37 @@
 <h1>Clases#edit</h1>
+<%= notice %>
+<%if current_user%>
+    <%= form_with(model: @clase, method: :patch, url: clases_update_path(:id => @clase.id)) do |form| %>
 
-<%= form_with(model: @clase, method: :patch, url: clases_update_path(:id => @clase.id)) do |form| %>
+        <div>
+            <%= form.label :Name %>
+            <%= form.text_field :name %>
+        </div>
 
-    <div>
-        <%= form.label :Name %>
-        <%= form.text_field :name %>
-    </div>
+        <div>
+            <%= form.label :Description %>
+            <%= form.text_field :description %>
+        </div>
 
-    <div>
-        <%= form.label :Description %>
-        <%= form.text_field :description %>
-    </div>
+        <div>
+            <%= form.label :Duration %>
+            <%= form.text_field :duration %>
+        </div>
 
-    <div>
-        <%= form.label :Duration %>
-        <%= form.text_field :duration %>
-    </div>
+        <div>
+            <%= form.label :Teacher %>
+            <%= form.text_field :teacher %>
+        </div>
 
-    <div>
-        <%= form.label :Teacher %>
-        <%= form.text_field :teacher %>
-    </div>
+        <div>
+            <%= form.label :Price %>
+            <%= form.text_field :price %>
+        </div>
 
-    <div>
-        <%= form.label :Price %>
-        <%= form.text_field :price %>
-    </div>
+        <div>
+            <%= form.submit 'Edit class' %>
+        </div>
 
-    <div>
-        <%= form.submit 'Edit class' %>
-    </div>
-
-<% end %>
-<%= link_to 'Go back', clases_show_path(:id => @clase.id) %>
+    <% end %>
+    <%= link_to 'Go back', clases_show_path(:id => @clase.id) %>
+<%end%>

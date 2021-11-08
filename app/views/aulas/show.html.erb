@@ -1,37 +1,48 @@
-<h1>
-    <%= @aula.name %>
-</h1>
+<%= notice %>
+<%if current_user%>
 
-<p>
-    <strong>Duration: </strong>
-    <%= @aula.duration %>
-</p>
+    <h1>
+        <%= @aula.name %>
+    </h1>
 
-<p>
-    <strong>Theme: </strong>
-    <%= @aula.theme %>
-</p>
+    <p>
+        <strong>Duration: </strong>
+        <%= @aula.duration %>
+    </p>
 
-<p>
-    <strong>Date: </strong>
-    <%= @aula.date %>
-</p>
+    <p>
+        <strong>Theme: </strong>
+        <%= @aula.theme %>
+    </p>
 
-<p>
-    <strong>Number: </strong>
-    <%= @aula.number %>
-</p>
+    <p>
+        <strong>Date: </strong>
+        <%= @aula.date %>
+    </p>
 
-<p>
-    <strong>Associated video: </strong>
-    <%= @aula.associated_video %>
-</p>
+    <p>
+        <strong>Number: </strong>
+        
+    </p>
 
-<p>
-    <strong>Associated curso: </strong>
-    <%= @aula.associatedcurso %>
-</p>
+    <p>
+        <strong>Associated video: </strong>
+        
+        
+        <%= content_tag @aula.associated_video %>
 
-<%= link_to 'Go back', aulas_index_path %>
-<%= link_to 'Edit aula', aulas_edit_path(:id => @aula.id) %>
-<%= link_to 'Delete aula', aulas_delete_path(:id => @aula.id), method: :delete %>
+
+    </p>
+
+    <p>
+        <strong>Associated curso: </strong>
+        <%= @aula.associatedcurso %>
+    </p>
+
+    <%= link_to 'Go back', aulas_index_path %>
+    <%if current_user.id == @aula.user_id or current_user.admin%>
+        <%= link_to 'Edit aula', aulas_edit_path(:id => @aula.id) %>
+        <%= link_to 'Delete aula', aulas_delete_path(:id => @aula.id), method: :delete %>
+    <%end%>
+    <%= link_to 'View questions', questions_index_path%>
+<%end%>

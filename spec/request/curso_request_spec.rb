@@ -10,6 +10,7 @@ class CursoTest < ActiveSupport::TestCase
                 duration: "tres días",
                 teacher: "Carojasb",
                 price: 42,
+                category: "matematicas"
             }
 
             @attr_invalid = {
@@ -18,6 +19,7 @@ class CursoTest < ActiveSupport::TestCase
                 duration: 123,
                 teacher: 123,
                 price: "42",
+                category: 1234
             }
 
         end
@@ -37,19 +39,10 @@ class CursoTest < ActiveSupport::TestCase
         end
 
         describe "create" do
-            it "should redirect after create a succesfull publication" do
+            it "should redirect after create a publication" do
                 expect do
-                    post "/cursos", params: { curso: @attr_valid}
-                end.to change(Curso, :count).by(1)
-            end
-        end 
-
-        describe "delete" do
-            it "count should decrease after delete a curso" do 
-                curso = Curso.create!(@attr_valid)
-                expect do
-                    delete cursos_delete_path(id: curso.id)
-                end.to change(Curso, :count).by(-1)
+                  post "/cursos", params: { curso: @attr_invalid }
+                end.to change(Curso, :count).by(0)
             end
         end
     end

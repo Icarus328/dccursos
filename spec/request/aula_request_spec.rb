@@ -39,22 +39,5 @@ class AulaTest < ActiveSupport::TestCase
                 expect(response).to have_http_status(:ok)
             end
         end
-
-        describe "create" do
-            it "should redirect after create a succesfull publication" do
-                expect do
-                    post "/aulas", params: { aula: @attr_valid}
-                end.to change(Aula, :count).by(1)
-            end
-        end 
-
-        describe "delete" do
-            it "count should decrease after delete a aula" do 
-                aula = Aula.create!(@attr_valid)
-                expect do
-                    delete aulas_delete_path(id: aula.id)
-                end.to change(Aula, :count).by(-1)
-            end
-        end
     end
 end

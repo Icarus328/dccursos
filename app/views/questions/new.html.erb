@@ -1,30 +1,37 @@
 <h1>Upload a new question</h1>
 
-<%= form_with(model: @question, method: :post) do |form| %>
+<%= notice %>
+<%if current_user%>
+    <%= form_with(model: @question, method: :post) do |form| %>
 
-    <div>
-        <%= form.label :Title %>
-        <%= form.text_field :title %>
-    </div>
+        <div>
+            <%= form.label :Title %>
+            <%= form.text_field :title %>
+        </div>
 
-    <div>
-        <%= form.label :Description %>
-        <%= form.text_field :description %>
-    </div>
+        <div>
+            <%= form.label :Description %>
+            <%= form.text_field :description %>
+        </div>
 
-    <div>
-        <%= form.label :Course %>
-        <%= form.text_field :course %>
-    </div>
+        <div>
+            <%= form.label :Course %>
+            <%= form.text_field :course %>
+        </div>
 
-    <div>
-        <%= form.label :Publication_date %>
-        <%= form.text_field :publication_date %>
-    </div>
+        <div>
+            <%= form.label :Publication_date %>
+            <%= form.text_field :publication_date %>
+        </div>
+        <div>
+            <%= form.number_field :user_id, id: :question_user_id,
+            class:"form-control", value: current_user.id, type: :hidden%>
+        </div>
 
-    <div>
-        <%= form.submit 'Create question' %>
-    </div>
+        <div>
+            <%= form.submit 'Create question' %>
+        </div>
 
-<% end %>
-<%= link_to 'Go back', questions_index_path %>
+    <% end %>
+    <%= link_to 'Go back', questions_index_path %>
+<%end%>

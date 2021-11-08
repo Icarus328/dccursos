@@ -1,33 +1,35 @@
 <h1>Clases#index</h1>
 
 <%= notice %>
+<%if current_user%>
 
-<table align='center'>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Duration</th>
-            <th>Theme</th>
-            <th>Date</th>
-            <th>Number</th>
-            <th>Associated_video</th>
-            <th colspan='3'></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @clases.each do |clase| %>
+    <table align='center'>
+        <thead>
             <tr>
-               <td><%= clase.name %></td>
-               <td><%= clase.duration %></td>
-               <td><%= clase.theme %></td>
-               <td><%= clase.date %></td>
-               <td><%= clase.number %></td>
-               <td><%= clase.associated_video %></td>
-               <td><%= link_to 'View details', clase_show_path(:id =>clase.id) %> </td>
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Theme</th>
+                <th>Date</th>
+                <th>Number</th>
+                <th>Associated_video</th>
+                <th colspan='3'></th>
             </tr>
-        <% end %>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <% @clases.each do |clase| %>
+                <tr>
+                <td><%= clase.name %></td>
+                <td><%= clase.duration %></td>
+                <td><%= clase.theme %></td>
+                <td><%= clase.date %></td>
+                <td><%= clase.number %></td>
+                <td><%= clase.associated_video %></td>
+                <td><%= link_to 'View details', clase_show_path(:id =>clase.id) %> </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 
-<%= link_to 'Upload a new class', clases_new_path%>
-<%= link_to 'Go back', cursos_index_path %>
+    <%= link_to 'Upload a new class', clases_new_path%>
+    <%= link_to 'Go back', cursos_index_path %>
+<%end%>

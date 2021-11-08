@@ -1,18 +1,30 @@
 <h1>Edit your review</h1>
 
-<%= form_with(model: @review, method: :patch, url: reviews_update_path(:id => @review.id)) do |form| %>
+<%= notice %>
+<%if current_user%>
+    <%= form_with(model: @review, method: :patch, url: reviews_update_path(:id => @review.id)) do |form| %>
 
-    
-    <div>
-        <%= form.label :Description %>
-        <%= form.text_field :description %>
-    </div>
+        
+        <div>
+            <%= form.label :Description %>
+            <%= form.text_field :description %>
+        </div>
 
-    <div>
-        <%= form.label :Punctuation %>
-        <%= form.number_field :punctuation %>
-    </div>
+        <div>
+            <%= form.label :Punctuation %>
+            <%= form.text_field :punctuation %>
+        </div>
 
-    
-<% end %>
-<%= link_to 'Go back', reviews_show_path(:id => @review.id) %>
+        <div>
+            <%= form.label :Curso_asociado %>
+            <%= form.text_field :cursoasociado %>
+        </div>
+
+        <div>
+            <%= form.submit 'Edit review' %>
+        </div>
+
+        
+    <% end %>
+    <%= link_to 'Go back', reviews_show_path(:id => @review.id) %>
+<%end%>

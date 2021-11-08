@@ -35,10 +35,10 @@ class QuestionTest < ActiveSupport::TestCase
         end
 
         describe "create" do
-            it "should redirect after create a succesfull publication" do
+            it "should redirect after create a publication" do
                 expect do
-                    post "/questions", params: { question: @attr_valid}
-                end.to change(Question, :count).by(1)
+                  post "/questions", params: { question: @attr_invalid }
+                end.to change(Question, :count).by(0)
             end
         end 
     end

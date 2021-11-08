@@ -6,5 +6,9 @@ class User < ApplicationRecord
 
     validates :email, presence: true, uniqueness: true
     validates :username, presence: true, uniqueness: true
-
+    has_many :users_cursos
+    has_many :cursos, through: :users_cursos
+    has_many :reviews
+    has_many :questions
+    has_many :answers
 end

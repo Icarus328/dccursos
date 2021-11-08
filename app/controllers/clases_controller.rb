@@ -10,7 +10,11 @@ class ClasesController < ApplicationController
       if @clase.save
           redirect_to clases_index_path, notice: 'Class succesfully created'
       else 
-          redirect_to clases_index_path, notice: 'Class succesfully not created'
+          redirect_to clases_index_path, notice: 'Error while creating the class.
+           Verify that all fields are completed and
+          the name, theme, associated video and associated curso correspond to strings, 
+          the duration and number correspond to a integer, and the date corresponds to a 
+          date (DD-MM-YYYY). If the error persists please contact an admin'
       end
     end
 
@@ -33,7 +37,7 @@ class ClasesController < ApplicationController
       if @clase.update(@clase_new_params)
           redirect_to clases_index_path, notice: 'Class edited'
       else
-          redirect_to clases_index_path, notice: 'Edit failed'
+          redirect_to clases_index_path, notice: 'Edit failed. Please fill in all the spaces'
         
       end
     end

@@ -1,25 +1,32 @@
 <h1>Upload a new review</h1>
 
-<%= form_with(model: @review, method: :post) do |form| %>
+<%= notice %>
+<%if current_user%>
+    <%= form_with(model: @review, method: :post) do |form| %>
 
-    <div>
-        <%= form.label :Description %>
-        <%= form.text_field :description %>
-    </div>
+        <div>
+            <%= form.label :Description %>
+            <%= form.text_field :description %>
+        </div>
 
-    <div>
-        <%= form.label :Punctuation %>
-        <%= form.number_field :punctuation %>
-    </div>
+        <div>
+            <%= form.label :Punctuation %>
+            <%= form.text_field :punctuation %>
+        </div>
 
-    <div>
-        <%= form.label :Curso_asociado %>
-        <%= form.number_field :curso_asociado %>
-    </div>
+        <div> 
+            <%= form.label :Curso_asociado %>
+            <%= form.text_field :cursoasociado %>
+        </div>
+        <div>
+            <%= form.number_field :user_id, id: :review_user_id,
+            class:"form-control", value: current_user.id, type: :hidden%>
+        </div>
 
-    <div>
-        <%= form.submit 'Create review' %>
-    </div>
+        <div>
+            <%= form.submit 'Create review' %>
+        </div>
 
-<% end %>
-<%= link_to 'Go back', reviews_index_path %>
+    <% end %>
+    <%= link_to 'Go back', reviews_index_path %>
+<%end%>

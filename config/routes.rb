@@ -2,6 +2,17 @@ Rails.application.routes.draw do
 
 
 
+  get 'answers/new'
+  post 'answers', to: 'answers#create' 
+  get 'answers/index'
+  get 'answers/show'
+  get 'answers/edit'
+
+  get 'answers/edit'
+  patch 'answers/update', to: 'answers#update', as: 'answers_update'
+
+  delete 'answers/delete', to: 'answers#delete', as: 'answers_delete'
+
   get 'aulas/new'
   post 'aulas', to: 'aulas#create'
   get 'aulas/index'

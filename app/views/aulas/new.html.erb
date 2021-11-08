@@ -1,45 +1,51 @@
 <h1>Upload a new aula</h1>
+<%= notice %>
+<%if current_user%>
+    <%= form_with(model: @aula, method: :post) do |form| %>
 
-<%= form_with(model: @aula, method: :post) do |form| %>
+        <div>
+            <%= form.label :Name %>
+            <%= form.text_field :name %>
+        </div>
 
-    <div>
-        <%= form.label :Name %>
-        <%= form.text_field :name %>
-    </div>
+        <div>
+            <%= form.label :Duration %>
+            <%= form.text_field :duration %>
+        </div>
 
-    <div>
-        <%= form.label :Duration %>
-        <%= form.text_field :duration %>
-    </div>
+        <div>
+            <%= form.label :Theme %>
+            <%= form.text_field :theme %>
+        </div>
 
-    <div>
-        <%= form.label :Theme %>
-        <%= form.text_field :theme %>
-    </div>
+        <div>
+            <%= form.label :Date %>
+            <%= form.text_field :date %>
+        </div>
 
-    <div>
-        <%= form.label :Date %>
-        <%= form.text_field :date %>
-    </div>
+        <div>
+            <%= form.label :Number %>
+            <%= form.text_field :number %>
+        </div>
 
-    <div>
-        <%= form.label :Number %>
-        <%= form.text_field :number %>
-    </div>
+        <div>
+            <%= form.label :Associated_video %>
+            <%= form.text_field :associated_video %>
+        </div>
 
-    <div>
-        <%= form.label :Associated_video %>
-        <%= form.text_field :associated_video %>
-    </div>
+        <div>
+            <%= form.label :Associated_curso %>
+            <%= form.text_field :associatedcurso %>
+        </div>
+        <div>
+            <%= form.number_field :user_id, id: :aula_user_id,
+            class:"form-control", value: current_user.id, type: :hidden%>
+        </div>
 
-    <div>
-        <%= form.label :Associated_curso %>
-        <%= form.text_field :associatedcurso %>
-    </div>
+        <div>
+            <%= form.submit 'Create aula' %>
+        </div>
 
-    <div>
-        <%= form.submit 'Create aula' %>
-    </div>
-
+    <% end %>
+    <%= link_to 'Go back', aulas_index_path %>
 <% end %>
-<%= link_to 'Go back', aulas_index_path %>

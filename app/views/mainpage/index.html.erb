@@ -1,5 +1,11 @@
 <h1> Bienvenido a DCCursos </h1>
-<h3> Porfavor logeate  </h3>
 
 
-<%= link_to 'Cursos disponibles', cursos_index_path %>
+
+
+<%if current_user%>
+    <%= link_to 'Cursos disponibles', cursos_index_path %>
+    <%= link_to 'View profile', users_show_path(current_user.id)%>
+<%else%>
+    <h3> Porfavor logeate </h3>
+<%end%>

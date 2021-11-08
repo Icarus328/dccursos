@@ -1,36 +1,39 @@
 <h1>Clases#new</h1>
 
-<%= form_with(model: @clase, method: :post) do |form| %>
+<%= notice %>
+<%if current_user%>
+    <%= form_with(model: @clase, method: :post) do |form| %>
 
-    <div>
-        <%= form.label :Name %>
-        <%= form.text_field :name %>
-    </div>
-    <div>
-        <%= form.label :Duration %>
-        <%= form.text_field :duration%>
-    </div>
-    <div>
-        <%= form.label :Theme %>
-        <%= form.text_field :theme %>
-    </div>
-    <div>
-        <%= form.label :Date %>
-        <%= form.text_field :date %>
-    </div>
-    <div>
-        <%= form.label :Number %>
-        <%= form.text_field :number %>
-    </div>
-    <div>
-        <%= form.label :Associated_video %>
-        <%= form.text_field :associated_video %>
-    </div>
-    <div>
-        <%= form.submit 'Create classroom' %>
-    </div>
+        <div>
+            <%= form.label :Name %>
+            <%= form.text_field :name %>
+        </div>
+        <div>
+            <%= form.label :Duration %>
+            <%= form.text_field :duration%>
+        </div>
+        <div>
+            <%= form.label :Theme %>
+            <%= form.text_field :theme %>
+        </div>
+        <div>
+            <%= form.label :Date %>
+            <%= form.text_field :date %>
+        </div>
+        <div>
+            <%= form.label :Number %>
+            <%= form.text_field :number %>
+        </div>
+        <div>
+            <%= form.label :Associated_video %>
+            <%= form.text_field :associated_video %>
+        </div>
+        <div>
+            <%= form.submit 'Create classroom' %>
+        </div>
 
-<% end %>
+    <% end %>
 
-<%= link_to 'Go back', clases_index_path %>
+    <%= link_to 'Go back', clases_index_path %>
+<%end%>
 

@@ -33,5 +33,12 @@ class ReviewTest < ActiveSupport::TestCase
                 expect(response).to have_http_status(:ok)
             end
         end
+        describe "create" do
+            it "should redirect after create a publication" do
+                expect do
+                  post "/reviews", params: { review: @attr_invalid }
+                end.to change(Review, :count).by(0)
+            end
+        end 
     end
 end

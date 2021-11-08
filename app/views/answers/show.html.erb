@@ -1,0 +1,19 @@
+<%= notice %>
+<%if current_user%>
+    <h1>
+        <%= @answer.content %>
+    </h1>
+
+    <p>
+        <strong>Associated question: </strong>
+        <%= @answer.associated_question %>
+    </p>
+
+
+
+    <%= link_to 'Go back', answers_index_path %>
+    <%if current_user.id == @answer.user_id or current_user.admin%>
+        <%= link_to 'Edit answer', answers_edit_path(:id => @answer.id) %>
+        <%= link_to 'Delete answer', answers_delete_path(:id => @answer.id), method: :delete %>
+    <%end%>
+<%end%>

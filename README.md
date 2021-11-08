@@ -51,3 +51,13 @@ La configuración del rubocop está diseñada para parecerse lo más posible a p
 ## Notas
 
 * En el codigo todavía se puede ver un crud "Clase", este codigo está inutilizado pero no afecta el correcto funcionamiento del programa.
+
+* Las credenciales de admin son email: admin@rubyonrails.com, password: password.
+
+* Para obtener el link de una imagen a usar en la app, se debe buscar el link de la imagen, conseguido al hacer click derecho.
+
+* Para obtener el link de un video para usar en la app, se debe usar el "embed link" que se obtiene de youtube al pulsar "compartir".
+
+* Para ver el video de una clase se debe hacer click en show details.
+
+* Del sprint, faltó implementar las entidades ligadas en el perfil de usuario, y terminar del todo los permisos, tambien, añadir una forma de inscribir un usuario a un curso.
