@@ -1,7 +1,8 @@
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
-<h1>Edit your aula</h1>
+<h1 class="title is-1 has-text-white">Edita tu aula</h1>
 <%= notice %>
-<%if current_user%>
+<%if current_user.id == @aula.user_id or current_user.admin%>
     <%= form_with(model: @aula, method: :patch, url: aulas_update_path(:id => @aula.id)) do |form| %>
 
         <div>
@@ -34,16 +35,12 @@
             <%= form.text_field :associated_video %>
         </div>
 
-        <div>
-            <%= form.label :Associatedcurso %>
-            <%= form.text_field :associatedcurso %>
-        </div>
 
 
         <div>
-            <%= form.submit 'Edit aula' %>
+            <%= form.submit 'Editar aula' %>
         </div>
 
     <% end %>
-    <%= link_to 'Go back', aulas_show_path(:id => @aula.id) %>
+    <%= link_to 'atrás', aulas_show_path(:id => @aula.id) %>
 <% end %>

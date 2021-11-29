@@ -1,39 +1,58 @@
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
 <%= notice %>
 <%if current_user%>
-    <h1>
-        <%= @curso.name %>
-    </h1>
+    <h1 class="title is-1 has-text-white"><%=  @curso.name %></h1>
+<br>
+    <h3 class="title is-3 has-text-white"><%= @curso.description %></h3>
+    <br>
+    <h3 class="title is-3 has-text-white"><%= @curso.duration %></h3>
+    <br>
+    <h3 class="title is-3 has-text-white"><%= @curso.teacher %></h3>
+    <br>
+    <h3 class="title is-3 has-text-white"><%= @curso.price %></h3>
+    <br>
+    <h3 class="title is-3 has-text-white"><%= @curso.category %></h3>
 
-    <p>
-        <strong>Description: </strong>
-        <%= @curso.description %>
-    </p>
-
-    <p>
-        <strong>Duration: </strong>
-        <%= @curso.duration %>
-    </p>
-
-    <p>
-        <strong>Teacher: </strong>
-        <%= @curso.teacher %>
-    </p>
-
-    <p>
-        <strong>Price: </strong>
-        <%= @curso.price %>
-    </p>
-
-    <p>
-        <strong>Category: </strong>
-        <%= @curso.category %>
-    </p>
-
-    <%= link_to 'Go back', cursos_index_path %>
     <%if current_user.id == @curso.user_id or current_user.admin%>
-        <%= link_to 'Edit curso', cursos_edit_path(:id => @curso.id) %>
-        <%= link_to 'Delete curso', cursos_delete_path(:id => @curso.id), method: :delete %>
-    <%end%>
-    <%= link_to 'View reviews', reviews_index_path %>
-    <%= link_to 'View aulas', aulas_index_path %>
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Editar curso', cursos_edit_path(:id => @curso.id)%></td></span>
+</span>
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Borrar curso', cursos_delete_path(:id => @curso.id), method: :delete %></td></span>
+</span>
 <%end%>
+<%end%>
+
+
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+
+
+  <span><td><%= link_to 'Ver reviews', reviews_index_path(:id => @curso.id)%></td></span>
+</span>
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+
+  <span><td><%= link_to 'Ver aulas', aulas_index_path(:id => @curso.id)%></td></span>
+</span>
+
+
+
+
+
+
+   

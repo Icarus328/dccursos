@@ -19,18 +19,26 @@ class QuestionTest < ActiveSupport::TestCase
             }
 
         end
-    
+
         describe "index" do
             it "should return a successful request" do
-                get "/questions/index"
+                get "/cursos/index"
                 expect(response).to have_http_status(:ok)
             end
         end
         
         describe "new" do 
             it "should return a successful request" do
-                get "/questions/new"
+                get "/cursos/new"
                 expect(response).to have_http_status(:ok)
+            end
+        end
+
+        describe "create" do
+            it "should redirect after create a publication" do
+                expect do
+                  post "/cursos", params: { curso: @attr_invalid }
+                end.to change(Curso, :count).by(0)
             end
         end
 

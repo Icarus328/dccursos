@@ -1,4 +1,6 @@
-<h1>Upload a new curso</h1>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+<h1 class="title is-1 has-text-white">Subir un nuevo curso</h1>
 
 <%= notice %>
 <%if current_user%>
@@ -35,14 +37,21 @@
         </div>
 
         <div>
-            <%= form.number_field :user_id, id: :curso_user_id,
+            <%= form.number_field :user_id, id: :question_user_id,
             class:"form-control", value: current_user.id, type: :hidden%>
         </div>
 
         <div>
-            <%= form.submit 'Create curso' %>
+            <%= form.submit 'Crear curso' %>
         </div>
 
     <% end %>
-    <%= link_to 'Go back', cursos_index_path %>
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'volver', cursos_index_path %></td></span>
+</span>
+
+
 <%end%>

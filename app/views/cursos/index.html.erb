@@ -1,36 +1,56 @@
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
+<h1 class="title is-1 has-text-white">Cursos</h1>
 
 <%= notice %>
-<%if current_user%>
-    <h1>CURSOS</h1>
 
-    <table align='center'>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Duration</th>
-                <th>Teacher</th>
-                <th>Price</th>
-                <th>Category</th>
-                <th colspan='3'></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @cursos.each do |curso| %>
-                <tr>
-                    <td><%= curso.name %></td>
-                    <td><%= curso.description %></td>
-                    <td><%= curso.duration %></td>
-                    <td><%= curso.teacher %></td>
-                    <td><%= curso.price %></td>
-                    <td><%= curso.category %></td>
-                    <td><%= link_to 'View details', cursos_show_path(:id => curso.id) %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+<form class="form-inline my-2 my-lg-0" action="/search">
+    <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search by nombre" aria-label="Search">
+    <button class="btn btn-outline-sucess my-2 my-sm-0 has-text-black" type="submit">Search</button>
+    </form>
 
-    <%= link_to 'Upload a new curso', cursos_new_path %>
-    <%= link_to 'Volver a la pagina anterior', mainpage_index_path%>
-<%end%>
+    <form class="form-inline my-2 my-lg-0" action="/search_categoria">
+    <input class="form-control mr-sm-2" name="q_categoria" type="text" placeholder="Search by categoria" aria-label="Search">
+    <button class="btn btn-outline-sucess my-2 my-sm-0 has-text-black" type="submit">Search</button>
+
+
+
+
+<br>
+<br>
+<div class="columns">
+  <% @cursos.each do |curso| %>
+  <div class="column has-background-link-dark">
+  <a class="has-text-white is-size-2 has-text-weight-bold"><%= curso.name%></a>
+  <br>
+  <p class="has-text-white">Descripción: <%= curso.description%></p>
+  <p class="has-text-white">Duración: <%= curso.duration%></p>
+  <p class="has-text-white">Profesor: <%= curso.teacher%></p>
+  <p class="has-text-white">Precio: <%= curso.price%></p>
+  <p class="has-text-white">Categoria: <%= curso.category%></p>
+  <p class="has-text-white"><span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span class="a has-text-white"><%= link_to 'Ver detalles', cursos_show_path(:id =>curso.id) %></span>
+</span>
+</p>
+</div>
+<% end %>
+
+</div>
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+
+  <span><td><%= link_to 'Volver a la página anterior', mainpage_index_path%></td></span>
+
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Nuevo curso', cursos_new_path %></td></span>
+</span>

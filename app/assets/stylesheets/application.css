@@ -13,3 +13,47 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+ @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+
+ 
+
+ body {
+    background-color: darkblue;
+    height: 100vh;
+  }
+
+  a:link {
+    color: white;
+  }
+
+  a:visited {
+    color: white;
+  }
+
+  * {
+      color: white;
+      
+  }
+  
+  input {
+      background-color: indigo;
+  }
+
+  .column {
+      margin: 20px;
+      width: 400px;
+      height: 400px;
+      min-width: 400px;
+      min-height: 400px;
+      
+  }
+
+.columns {
+    overflow-x: scroll;
+  }
+
+  
+

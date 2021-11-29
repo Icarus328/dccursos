@@ -1,7 +1,9 @@
-<h1>Edit your answer</h1>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+<h1 class="title is-1 has-text-white">Edita tu respuesta</h1>
 
 <%= notice %>
-<%if current_user%>
+<%if current_user.id == @answer.user_id or current_user.admin%>
     <%= form_with(model: @answer, method: :patch, url: answers_update_path(:id => @answer.id)) do |form| %>
 
         <div>
@@ -9,17 +11,12 @@
             <%= form.text_field :content %>
         </div>
 
-        
-
         <div>
-            <%= form.label :Associated_question %>
-            <%= form.text_field :associated_question %>
-        </div>
 
-        <div>
-            <%= form.submit 'Edit answer' %>
+            <%= form.submit 'Editar respuesta' %>
         </div>
 
     <% end %>
-    <%= link_to 'Go back', answers_show_path(:id => @answer.id) %>
+    <%= link_to 'Volver', answers_show_path(:id => @answer.id) %>
+
 <%end%>

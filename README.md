@@ -10,8 +10,6 @@ La configuración del rubocop está diseñada para parecerse lo más posible a p
 
 ## Cosas a editar en el readme
 
-
-* ESte ses mi swapm
 * Versión de ruby
 
 * Dependencias del sistema (gemas?)

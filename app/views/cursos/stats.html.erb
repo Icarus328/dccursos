@@ -1,0 +1,35 @@
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+<%= notice %>
+<%if current_user%>
+<br>
+    <span class="icon-text">
+<h1 class="title is-1 has-text-white">Estadisticas del curso</h1>
+  <span class="icon is-large has-text-white">
+    <i class="fas fa-chart-pie fa-2x"></i>
+  </span>
+</span>
+        <h2 class="title is-2 has-text-white"><%= @curso.name %></h2>
+
+    <p>
+        <h5 class="title is-5 has-text-white">Ingresos por alumno: <%= @curso.price %></h5>
+        
+    </p>
+
+    <p>
+        <h5 class="title is-5 has-text-white">Tiempo promedio para completar el curso: <%= @curso.duration %></h5>
+        
+    </p>
+
+
+    
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Volver a la pagina principal', mainpage_index_path%></td></span>
+</span>
+
+
+<%end%>

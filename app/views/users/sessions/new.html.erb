@@ -1,4 +1,6 @@
-<h2>Log in</h2>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+<h2>Iniciar sesión</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -19,8 +21,21 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Iniciar sesión" %>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><%= render "users/shared/links" %></span>
+</span>
+<br>
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-up"></i>
+  </span>
+  <span></span>
+</span>

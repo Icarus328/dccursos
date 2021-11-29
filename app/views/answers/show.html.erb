@@ -1,19 +1,33 @@
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
 <%= notice %>
 <%if current_user%>
-    <h1>
-        <%= @answer.content %>
-    </h1>
-
-    <p>
-        <strong>Associated question: </strong>
-        <%= @answer.associated_question %>
-    </p>
-
-
-
-    <%= link_to 'Go back', answers_index_path %>
-    <%if current_user.id == @answer.user_id or current_user.admin%>
-        <%= link_to 'Edit answer', answers_edit_path(:id => @answer.id) %>
-        <%= link_to 'Delete answer', answers_delete_path(:id => @answer.id), method: :delete %>
-    <%end%>
+    
+    <h3 class="title is-3 has-text-white"><%= @answer.content %></h3>
+        
 <%end%>
+
+
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Volver a la pagina anterior', answers_index_path%></td></span>
+</span>
+
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Editar respuesta', answers_edit_path(:id => @answer.id)%></td></span>
+</span>
+
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Eliminar respuesta', answers_delete_path(:id => @answer.id), method: :delete%></td></span>
+</span>

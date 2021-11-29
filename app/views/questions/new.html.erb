@@ -1,4 +1,6 @@
-<h1>Upload a new question</h1>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+<h1 class="title is-1 has-text-white">Subir una nueva respuesta</h1>
 
 <%= notice %>
 <%if current_user%>
@@ -14,11 +16,7 @@
             <%= form.text_field :description %>
         </div>
 
-        <div>
-            <%= form.label :Course %>
-            <%= form.text_field :course %>
-        </div>
-
+    
         <div>
             <%= form.label :Publication_date %>
             <%= form.text_field :publication_date %>
@@ -29,9 +27,21 @@
         </div>
 
         <div>
-            <%= form.submit 'Create question' %>
+            <%@aula = Aula.find_by(id: params[:id])%>
+            <%= form.number_field :aula_id, id: :aula_id, value:@aula.id, type: "hidden"%>
+        </div>
+        
+        <div>
+            <%= form.submit 'Crear question' %>
         </div>
 
     <% end %>
-    <%= link_to 'Go back', questions_index_path %>
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'volver', questions_index_path(:id => @aula.id) %></td></span>
+</span>
+
 <%end%>

@@ -14,10 +14,32 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% if current_user %>
-      <%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %>
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %></span>
+</span>
+
+      
     <% else %>
-      <%= link_to "Iniciar Sesión", new_user_session_path %>
-      <%= link_to "Registrarme", new_user_registration_path %>
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><%= link_to "Iniciar Sesión", new_user_session_path %></span>
+</span>
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><%= link_to "Registrarme", new_user_registration_path %></span>
+</span>
+      
+      
     <% end %>
     <%= yield %>
   </body>

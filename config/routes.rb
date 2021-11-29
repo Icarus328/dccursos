@@ -24,10 +24,14 @@ Rails.application.routes.draw do
   get 'mainpage', to: 'mainpage#index', as: 'mainpage_index'
   root to: 'mainpage#index'
 
+
+  get 'search', to: "cursos#search"
+  get 'search_categoria', to: "cursos#search_categoria"
   get 'cursos/new'
   post 'cursos', to: 'cursos#create'
   get 'cursos/index'
   get 'cursos/show'
+  get 'cursos/stats'
   get 'cursos/edit'
   patch 'cursos/update', to: 'cursos#update', as: 'cursos_update'
   delete 'cursos/delete', to: 'cursos#delete', as: 'cursos_delete'

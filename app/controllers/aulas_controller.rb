@@ -1,28 +1,24 @@
 class AulasController < ApplicationController
     def new
         @aula = Aula.new
+        @curso = Curso.find(params[:id])
     end
 
     def create
         @aulas_params = params.require(:aula).permit(:name, :duration, :theme, :date, :number, 
-                                                     :associated_video, :associatedcurso, :user_id)
-      @aula = Aula.create(@aulas_params)
+                                                     :associated_video, :user_id, :curso_id)
+        @aula = Aula.create(@aulas_params)
       if @aula.save
-          redirect_to aulas_index_path, notice: 'Aula successfully created'
+          redirect_to aulas_index_path(:id => @aula.curso_id), notice: 'Aula creada'
       else
-          redirect_to aulas_index_path, notice: 'Error while creating the aula. Verify that all 
-          fields are completed and
-                                                 the name, theme, associated video and associated
-                                                  curso correspond to strings, 
-                                                 the duration and number correspond to a integer,
-                                                  and the date corresponds to a 
-                                                 date (DD-MM-YYYY). If the error persists please 
-                                                 contact an admin'
+          redirect_to aulas_index_path(:id => @aula.curso_id), 
+                      notice: 'Error al crear Aula, por favor revisar que los
+                       espacios estan completados'
       end
     end
 
     def index
-        @aulas = Aula.all
+        @curso = Curso.find(params[:id])
     end
 
     def show
@@ -35,24 +31,22 @@ class AulasController < ApplicationController
 
     def update
         @aula = Aula.find(params[:id])
-      @aulas_new_params = params.require(:aula).permit(:name, :duration, :theme, :date, :number, 
-                                                       :associated_video, :associatedcurso,
-                                                       :user_id)
-      if @aula.update(@aulas_new_params)
-          redirect_to aulas_index_path, notice: 'Aula edited correctly'
-      else
-          redirect_to aulas_index_path, notice: 'Error while editing the aula. Verify that all 
-          fields are completed and
-          the name, theme, associated video and associated curso correspond to strings, 
-          the duration and number correspond to a integer, and the date corresponds to a 
-          date (DD-MM-YYYY). If the error persists please contact an admin'
+        @aulas_new_params = params.require(:aula).permit(:name, :duration, :theme, :date, :number, 
+                                                         :associated_video,
+                                                         :user_id, :curso_id)
+        if @aula.update(@aulas_new_params)
+            redirect_to aulas_index_path(:id => @aula.curso_id), notice: 'Aula editada'
+        else
+            redirect_to aulas_index_path(:id => @aula.curso_id), 
+                        notice: 'Error al crear Aula, por favor revisar que los espacios
+                         estan completados'
       end
     end
 
     def delete
         @aula = Aula.find(params[:id])
-      @aula.destroy
-      redirect_to aulas_index_path, notice: 'Aula nicely destroyed'
+        @aula.destroy
+        redirect_to aulas_index_path(:id => @aula.curso_id), notice: 'Aula eliminada'
     end
 end
 

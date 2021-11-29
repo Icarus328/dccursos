@@ -1,4 +1,6 @@
-<h1>Upload a new review</h1>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+<h1 class="title is-1 has-text-white">Subir una nueva review</h1>
 
 <%= notice %>
 <%if current_user%>
@@ -14,19 +16,27 @@
             <%= form.text_field :punctuation %>
         </div>
 
-        <div> 
-            <%= form.label :Curso_asociado %>
-            <%= form.text_field :cursoasociado %>
-        </div>
         <div>
             <%= form.number_field :user_id, id: :review_user_id,
             class:"form-control", value: current_user.id, type: :hidden%>
         </div>
+        <div>
+            <%@curso = Curso.find_by(id: params[:id])%>
+            <%= form.number_field :curso_id, id: :curso_id, value:@curso.id, type: "hidden"%>
+        </div>
 
         <div>
-            <%= form.submit 'Create review' %>
+            <%= form.submit 'Crear review' %>
         </div>
 
     <% end %>
-    <%= link_to 'Go back', reviews_index_path %>
+
+
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'volver', reviews_index_path(:id => @curso.id) %></td></span>
+</span>
 <%end%>

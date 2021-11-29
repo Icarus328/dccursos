@@ -1,28 +1,44 @@
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
 <%= notice %>
 <%if current_user%>
-    <h1>
-        <%= @question.title %>
-    </h1>
-
-    <p>
-        <strong>Description: </strong>
-        <%= @question.description %>
-    </p>
-
-    <p>
-        <strong>Course: </strong>
-        <%= @question.course %>
-    </p>
-
-    <p>
-        <strong>Publication date: </strong>
-        <%= @question.publication_date %>
-    </p>
-
-    <%= link_to 'Go back', questions_index_path %>
-    <%= link_to 'View answers', answers_index_path %>
+    <h1 class="title is-1 has-text-white"><%=  @question.title %></h1>
+<br>
+    <h3 class="title is-3 has-text-white"><%= @question.description %></h3>
+    <br>
+    <h3 class="title is-3 has-text-white"><%= @question.publication_date %></h3>
     <%if current_user.id == @question.user_id or current_user.admin%>
-        <%= link_to 'Edit question', questions_edit_path(:id => @question.id) %>
-        <%= link_to 'Delete question', questions_delete_path(:id => @question.id), method: :delete %>
-    <%end%>
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Editar pregunta', questions_edit_path(:id => @question.id)%></td></span>
+</span>
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Borrar pregunta', questions_delete_path(:id => @question.id), method: :delete %></td></span>
+</span>
 <%end%>
+<%end%>
+
+
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+
+  <span><td><%= link_to 'Ver respuestas', answers_index_path(:id => @question.id)%></td></span>
+</span>
+
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+
+  <span><td><%= link_to 'Volver', questions_index_path(:id => @question.aula_id)%></td></span>
+</span>

@@ -4,10 +4,6 @@ RSpec.describe User, type: :model do
     let(:user) {create(:user)}
     let(:user2) {create(:user)}
 
-    it 'is valid with valid attributes' do
-        expect(user).to be_valid
-    end
-
     it 'is not valid without email ' do
         user.email = nil
         expect(user).not_to be_valid
@@ -45,12 +41,12 @@ RSpec.describe User, type: :model do
     end
 
     it 'is not valid with 4 digit password ' do
-        user.password = "111"
+        user.password = "1111"
         expect(user).not_to be_valid
     end
 
     it 'is not valid with 5 digit password ' do
-        user.password = "111"
+        user.password = "11111"
         expect(user).not_to be_valid
     end
 
@@ -63,6 +59,33 @@ RSpec.describe User, type: :model do
         user.age = -42069
         expect(user).to be_valid
     end
+
+    it 'is valid with valid name ' do
+        expect(user).to be_valid
+    end
+
+    it 'is valid with valid email ' do
+        expect(user).to be_valid
+    end
+
+    it 'is valid with valid password ' do
+        expect(user).to be_valid
+    end
+    it 'is valid with valid age ' do
+        expect(user).to be_valid
+    end
+
+    it 'is valid with repeat password ' do
+        user.password = user2.password
+        expect(user).to be_valid
+    end
+
+    it 'is valid with repeat password ' do
+        user.password = user2.password
+        expect(user).to be_valid
+    end
+
+
 
     
 end

@@ -1,0 +1,41 @@
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<h1 class="title is-1 has-text-white">Resultados de la busqueda</h1>
+
+
+
+<br>
+<br>
+<div class="columns">
+  <% @cursos.each do |curso| %>
+  <div class="column has-background-link-dark">
+  <a class="has-text-white is-size-2 has-text-weight-bold"><%= curso.name%></a>
+  <br>
+  <p class="has-text-white">Descripción: <%= curso.description%></p>
+  <p class="has-text-white">Duración: <%= curso.duration%></p>
+  <p class="has-text-white">Profesor: <%= curso.teacher%></p>
+  <p class="has-text-white">Precio: <%= curso.price%>$</p>
+  <p class="has-text-white">Categoria: <%= curso.category%></p>
+  <p class="has-text-white"><span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span class="a has-text-white"><%= link_to 'Ver detalles', cursos_show_path(:id => curso.id) %></span>
+</span>
+</p>
+</div>
+<% end %>
+</div>
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Volver a la pagina anterior', cursos_index_path%></td></span>
+</span>
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Subir curso nuevo', cursos_new_path%></td></span>
+</span>

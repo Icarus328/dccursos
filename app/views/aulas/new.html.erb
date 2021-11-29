@@ -1,4 +1,6 @@
-<h1>Upload a new aula</h1>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+<h1 class="title is-1 has-text-white">Subir una nueva aula</h1>
 <%= notice %>
 <%if current_user%>
     <%= form_with(model: @aula, method: :post) do |form| %>
@@ -33,19 +35,31 @@
             <%= form.text_field :associated_video %>
         </div>
 
-        <div>
-            <%= form.label :Associated_curso %>
-            <%= form.text_field :associatedcurso %>
-        </div>
+        
         <div>
             <%= form.number_field :user_id, id: :aula_user_id,
             class:"form-control", value: current_user.id, type: :hidden%>
         </div>
+        <div>
+            <%@curso = Curso.find_by(id: params[:id])%>
+            <%= form.number_field :curso_id, id: :curso_id, value:@curso.id, type: "hidden"%>
+        </div>
 
         <div>
-            <%= form.submit 'Create aula' %>
+            <%= form.submit 'Crear aula' %>
         </div>
 
     <% end %>
-    <%= link_to 'Go back', aulas_index_path %>
+     <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'volver', aulas_index_path(:id => @curso.id) %></td></span>
+</span>
+
+
+
+
+
+    
 <% end %>

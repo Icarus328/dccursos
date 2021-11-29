@@ -3,18 +3,24 @@ class CursosController < ApplicationController
         @curso = Curso.new
     end
 
+    def search
+        @cursos = Curso.where("name LIKE ?", "%" + params[:q] + "%")
+    end
+
+    def search_categoria
+        @cursos = Curso.where("category LIKE ?", "%" + params[:q_categoria] + "%")
+    end
+
     def create
         @cursos_params = params.require(:curso).permit(:name, :description, :duration, :teacher, 
                                                        :price, :category, :user_id)
         @curso = Curso.create(@cursos_params)
         if @curso.save
-            redirect_to cursos_index_path, notice: 'Curso successfully created'
+            redirect_to cursos_index_path, notice: 'Curso creado'
         else
-            redirect_to cursos_index_path, notice: 'Error while creating the curso.
-             Verify that all fields are completed and
-            the name, description, teacher and category correspond to strings and
-            the price correspond to a integer. If the error persists please contact
-             an admin'
+            redirect_to cursos_index_path, 
+                        notice: 'Error al crear Curso, por favor revisar que los
+                         espacios estan completados'
         end
     end
 
@@ -36,19 +42,21 @@ class CursosController < ApplicationController
                                                            :teacher, 
                                                            :price, :category, :user_id)
         if @curso.update(@cursos_new_params)
-            redirect_to cursos_index_path, notice: 'Curso edited correctly'
+            redirect_to cursos_index_path, notice: 'Curso editado'
         else
-            redirect_to cursos_index_path, notice: 'Error while editing the curso. 
-            Verify that all fields are completed and
-            the name, description, teacher and category correspond to strings and
-            the price correspond to a integer. If the error persists please contact
-             an admin'
+            redirect_to cursos_index_path, 
+                        notice: 'Error al crear Curso, por favor revisar que 
+                        los espacios estan completados'
         end
     end
 
     def delete
         @curso = Curso.find(params[:id])
         @curso.destroy
-        redirect_to cursos_index_path, notice: 'Curso nicely destroyed'
+        redirect_to cursos_index_path, notice: 'Curso eliminado'
+    end
+
+    def stats
+        @curso = Curso.find(params[:id])
     end
 end

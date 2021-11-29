@@ -1,4 +1,6 @@
-<h1>Upload a new answer</h1>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+<h1 class="title is-1 has-text-white">Subir una nueva respuesta</h1>
 
 <%= notice %>
 <%if current_user%>
@@ -9,13 +11,9 @@
             <%= form.text_field :content %>
         </div>
 
-        <div>
-            <%= form.label :associated_question %>
-            <%= form.text_field :associated_question %>
-        </div>
 
         <div>
-            <%= form.submit 'Create answer' %>
+            <%= form.submit 'Crear answer' %>
         </div>
         
         <div>
@@ -23,6 +21,18 @@
             class:"form-control", value: current_user.id, type: :hidden%>
         </div>
 
+        <div>
+            <%@question = Question.find_by(id: params[:id])%>
+            <%= form.number_field :question_id, id: :question_id, value:@question.id, type: "hidden"%>
+        </div>
+
     <% end %>
-    <%= link_to 'Go back', answers_index_path %>
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'volver', answers_index_path(:id => @question.id) %></td></span>
+</span>
+
 <%end%>

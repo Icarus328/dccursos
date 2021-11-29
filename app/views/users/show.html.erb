@@ -1,25 +1,123 @@
-<h1>
-    <%= @user.username %>
-</h1>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+<br>
+<span class="icon-text">
+<h1 class="title is-1 has-text-white">Perfil de usuario</h1>
+  <span class="icon is-large has-text-white">
+    <i class="fas fa-home fa-2x"></i>
+  </span>
+</span>
+<br>
+
+
+
+<div class="columns">
+  <div class="column">
+    
+
+<span class="icon-text">
+<h2 class="title is-2 has-text-white">Informacion de usuario</h2>
+  <span class="icon is-large has-text-white">
+    <i class="fas fa-info-circle fa-2x"></i>
+  </span>
+</span>
+
+    <h3 class="title is-3 has-text-white"><%= @user.username %></h3>
+
 
 <p>
-    <strong>Email: </strong>
     <%= @user.email %>
 </p>
 
 <p>
-    <strong>Edad: </strong>
     <%= @user.age %>
+     años
 </p>
 
 <p>
-   <strong>Avatar </strong>
-   <% if @user.avatar %>
+   <% begin %>
     <%= image_tag @user.avatar, size: "150" %>
+    <% rescue%>
+    <% puts "Foto de usuario no valida" %>
  <% end %>
-
+ 
 </p>
-<% link_to 'Go back', cursos_index_path %>
-<%= link_to 'Edit profile', edit_user_registration_path %>
-<%= link_to 'Volver a la pagina anterior', mainpage_index_path%>
+<div>
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><%= link_to 'Editar perfil', edit_user_registration_path %></span>
+</span>
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><%= link_to 'Volver a la pagina anterior', mainpage_index_path%></span>
+</span>
+  </div>
+
+  </div>
+  <div class="column">
+
+
+<span class="icon-text">
+<h2 class="title is-2 has-text-white">Cursos creados</h2>
+  <span class="icon is-large has-text-white">
+    <i class="fas fa-book fa-2x"></i>
+  </span>
+</span>
+
+  <% @cursos_de_user =  User.joins(:cursos).where(cursos: { user_id: @user.id }).pluck("name", "user_id") %>
+  <% @cursos_de_user.each do |curso_de_user|%>
+  <tr>
+  <p>
+  <h3 class="title is-3 has-text-white"><td><%= curso_de_user[0] %></td><br></h3>
+  <% @cursos_a_tomar =  Curso.where(cursos: { name: curso_de_user[0] }).pluck("id") %>
+  
+  <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Ver estadisticas', cursos_stats_path(:id => @cursos_a_tomar[0]) %></td></span>
+</span>
+  </p>
+  </tr>
+  <% end %>
+
+
+
+
+  </div>
+  <div class="column">
+
+
+
+ <span class="icon-text">
+<h2 class="title is-2 has-text-white">preguntas hechas</h2>
+  <span class="icon is-large has-text-white">
+    <i class="fas fa-question fa-2x"></i>
+  </span>
+</span   
+
+<br>
+<p>
+  <% @preguntas_de_user =  User.joins(:questions).where(questions: { user_id: @user.id }).pluck("title") %>
+  <% @preguntas_de_user.each do |pregunta_de_user|%>
+
+  <%= pregunta_de_user %>
+  <br>
+  <% end %>
+</p>
+</div>
+
+
+
+
+
+
+
+
+
 

@@ -1,11 +1,29 @@
-<h1> Bienvenido a DCCursos </h1>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
+<h1 class="title is-1 has-text-white">Bienvenido a DCCursos!</h1>
 
-
+<figure class="image is-128x128" style="    margin: auto;">
+  <img class="is-rounded" src="https://www.estrategiaynegocios.net/csp/mediapool/sites/dt.common.streams.StreamServer.cls?STREAMOID=CoFX3ymSERXjLBqj1xZFks$daE2N3K4ZzOUsqbU5sYtLFyugW8xRdQji_k01H1Ea6FB40xiOfUoExWL3M40tfzssyZqpeG_J0TFo7ZhRaDiHC9oxmioMlYVJD0A$3RbIiibgT65kY_CSDiCiUzvHvODrHApbd6ry6YGl5GGOZrs-&CONTENTTYPE=image/jpeg">
+</figure>
 
 <%if current_user%>
-    <%= link_to 'Cursos disponibles', cursos_index_path %>
-    <%= link_to 'View profile', users_show_path(current_user.id)%>
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><%= link_to 'Cursos disponibles', cursos_index_path %></span>
+</span>
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><%= link_to 'Ver perfil de usuario', users_show_path(current_user.id)%></span>
+</span>
+
+    
+
 <%else%>
-    <h3> Porfavor logeate </h3>
+    <h3 class="title is-1 has-text-white">Porfavor logeate</h3>
 <%end%>

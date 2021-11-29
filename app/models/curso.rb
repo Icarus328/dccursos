@@ -5,5 +5,13 @@ class Curso < ApplicationRecord
     validates :teacher, length: { minimum: 1 }
     validates :price, length: { minimum: 1 }
     validates :category, length: { minimum: 1 }
+
+    has_many :users_cursos
+    has_many :users, through: :users_cursos
+    has_many :reviews
+    has_many :questions
+    has_many :answers
+    has_many :aulas
     belongs_to :user
+    has_many :questions
 end

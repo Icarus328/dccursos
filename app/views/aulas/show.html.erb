@@ -1,48 +1,56 @@
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
 <%= notice %>
 <%if current_user%>
+   <h1 class="title is-1 has-text-white"><%=  @aula.name %></h1>
+<br>
+    <h3 class="title is-3 has-text-white"><%= @aula.duration %></h3>
+    <br>
+    <h3 class="title is-3 has-text-white"><%= @aula.theme %></h3>
+    <br>
+    <h3 class="title is-3 has-text-white"><%= @aula.date %></h3>
+    <br>
+    <h3 class="title is-3 has-text-white"><%= @aula.number %></h3>
+    <br>
+    <h3 class="title is-3 has-text-white"><%= @aula.associated_video %></h3>
 
-    <h1>
-        <%= @aula.name %>
-    </h1>
-
-    <p>
-        <strong>Duration: </strong>
-        <%= @aula.duration %>
-    </p>
-
-    <p>
-        <strong>Theme: </strong>
-        <%= @aula.theme %>
-    </p>
-
-    <p>
-        <strong>Date: </strong>
-        <%= @aula.date %>
-    </p>
-
-    <p>
-        <strong>Number: </strong>
-        
-    </p>
-
-    <p>
-        <strong>Associated video: </strong>
-        
-        
-        <%= content_tag @aula.associated_video %>
-
-
-    </p>
-
-    <p>
-        <strong>Associated curso: </strong>
-        <%= @aula.associatedcurso %>
-    </p>
-
-    <%= link_to 'Go back', aulas_index_path %>
     <%if current_user.id == @aula.user_id or current_user.admin%>
-        <%= link_to 'Edit aula', aulas_edit_path(:id => @aula.id) %>
-        <%= link_to 'Delete aula', aulas_delete_path(:id => @aula.id), method: :delete %>
-    <%end%>
-    <%= link_to 'View questions', questions_index_path%>
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Editar aula', aulas_edit_path(:id => @aula.id)%></td></span>
+</span>
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Borrar aula', aulas_delete_path(:id => @aula.id), method: :delete %></td></span>
+</span>
 <%end%>
+<%end%>
+
+
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+
+
+  <span><td><%= link_to 'Ver preguntas', questions_index_path(:id => @aula.id)%></td></span>
+</span>
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+
+  <span><td><%= link_to 'Volver', aulas_index_path(:id => @aula.curso_id)%></td></span>
+</span>
+
+
+   
+
+    

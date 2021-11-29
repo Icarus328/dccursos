@@ -1,24 +1,23 @@
 class AnswersController < ApplicationController
     def new
         @answer =Answer.new
+        @question = Question.find(params[:id])
     end
 
     def create
-        @answer_params = params.require(:answer).permit(:content, :associated_question, :user_id)
+        @answer_params = params.require(:answer).permit(:content, :user_id, :question_id)
       @answer = Answer.create(@answer_params)
       if @answer.save
-          redirect_to answers_index_path, notice: 'Answer created succesfully'
+          redirect_to answers_index_path(:id => @answer.question_id), notice: 'Answer creada'
       else
-          redirect_to answers_index_path, notice: 'Error while creating the aula.
-           Verify that all fields are completed and
-      the name, theme, associated video and associated curso correspond to strings, 
-      the duration and number correspond to a integer, and the date corresponds to a 
-      date (DD-MM-YYYY). If the error persists please contact an admin'
+          redirect_to answers_index_path(:id => @answer.question_id), 
+                      notice: 'Error al crear Answer, por favor revisar que los espacios estan 
+                      completados'
       end
       end
 
     def index
-        @answers = Answer.all
+        @question = Question.find(params[:id])
     end
 
     def show
@@ -31,21 +30,19 @@ class AnswersController < ApplicationController
 
     def update
         @answer = Answer.find(params[:id])
-    @answers_new_params = params.require(:answer).permit(:content, :associated_question, :user_id)
+        @answers_new_params = params.require(:answer).permit(:content, :user_id, :question_id)
     if @answer.update(@answers_new_params)
-        redirect_to answers_index_path, notice: 'answer edited correctly'
+        redirect_to answers_index_path(:id => @answer.question_id), notice: 'Answer editada'
     else
-        redirect_to answers_index_path, notice: 'Error while editing the answer. Verify that all 
-        fields are completed and
-      the title, description and course correspond to strings and
-      the publication date corresponds to a date (DD-MM-YYYY). If the error persists please
-       contact an admin'
+        redirect_to answers_index_path(:id => @answer.question_id), 
+                    notice: 'Error al edita Answer, por favor revisar que los espacios estan 
+                    completados'
     end
   end
 
     def delete
         @answer = Answer.find(params[:id])
       @answer.destroy
-      redirect_to answers_index_path, notice: 'answer nicely destroyed'
+      redirect_to answers_index_path(:id => @answer.question_id), notice: 'Answer eliminada'
     end
 end

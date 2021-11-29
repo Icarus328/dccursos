@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_05_030206) do
+ActiveRecord::Schema.define(version: 2021_11_29_000803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,11 @@ ActiveRecord::Schema.define(version: 2021_11_05_030206) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
-    t.string "associated_question"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "question_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
@@ -54,20 +55,10 @@ ActiveRecord::Schema.define(version: 2021_11_05_030206) do
     t.string "associated_video"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "associatedcurso"
     t.bigint "user_id"
+    t.bigint "curso_id"
+    t.index ["curso_id"], name: "index_aulas_on_curso_id"
     t.index ["user_id"], name: "index_aulas_on_user_id"
-  end
-
-  create_table "clases", force: :cascade do |t|
-    t.integer "name"
-    t.string "duration"
-    t.string "theme"
-    t.date "date"
-    t.integer "number"
-    t.string "associated_video"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "classes", force: :cascade do |t|
@@ -97,11 +88,12 @@ ActiveRecord::Schema.define(version: 2021_11_05_030206) do
   create_table "questions", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "course"
     t.date "publication_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "aula_id"
+    t.index ["aula_id"], name: "index_questions_on_aula_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
@@ -118,8 +110,9 @@ ActiveRecord::Schema.define(version: 2021_11_05_030206) do
     t.integer "punctuation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "cursoasociado"
     t.bigint "user_id"
+    t.bigint "curso_id"
+    t.index ["curso_id"], name: "index_reviews_on_curso_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -149,10 +142,14 @@ ActiveRecord::Schema.define(version: 2021_11_05_030206) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "aulas", "cursos"
   add_foreign_key "aulas", "users"
   add_foreign_key "cursos", "users"
+  add_foreign_key "questions", "aulas"
   add_foreign_key "questions", "users"
+  add_foreign_key "reviews", "cursos"
   add_foreign_key "reviews", "users"
   add_foreign_key "users_cursos", "cursos"
   add_foreign_key "users_cursos", "users"

@@ -1,31 +1,44 @@
-<h1>questions</h1>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+<h1 class="title is-1 has-text-white">Preguntas</h1>
 
 <%= notice %>
 <%if current_user%>
 
-    <table align='center'>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Course</th>
-                <th>Publication date</th>
-                <th colspan='3'></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @questions.each do |question| %>
-                <tr>
-                    <td><%= question.title %></td>
-                    <td><%= question.description %></td>
-                    <td><%= question.course %></td>
-                    <td><%= question.publication_date %></td>
-                    <td><%= link_to 'View details', questions_show_path(:id => question.id) %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
 
-    <%= link_to 'Upload a new question', questions_new_path %>
-    <%= link_to 'Go back to cursos index', cursos_index_path %>
-<%end%>
+<br>
+<br>
+<div class="columns">
+  <% @aula.questions.each do |question| %>
+  <div class="column has-background-link-dark">
+  <a class="has-text-white is-size-2 has-text-weight-bold"><%= question.title%></a>
+  <br>
+  <p class="has-text-white">Descripción: <%= question.description%></p>
+  <p class="has-text-white">Fecha de publicación: <%= question.publication_date%></p>
+  <p class="has-text-white"><span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span class="a has-text-white"><%= link_to 'Ver detalles', questions_show_path(:id => question.id) %></span>
+</span>
+</p>
+</div>
+<% end %>
+<% end %>
+</div>
+
+    <span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+
+  <span><td><%= link_to 'Volver a ver los cursos', cursos_index_path(:id => @aula.curso_id)%></td></span>
+
+
+<span class="icon-text">
+  <span class="icon has-text-white">
+    <i class="fas fa-arrow-right"></i>
+  </span>
+  <span><td><%= link_to 'Subir una nueva pregunta', questions_new_path(:id => @aula.id)%></td></span>
+</span>
+
