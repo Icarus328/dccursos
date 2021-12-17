@@ -1,6 +1,5 @@
 # grupo-87
 
-Hola, este es en teoría la raiz del proyecto? Este es un testeo del repositorio del proyecto, sientanse libres de editar este readme con algo más apropiado.
 
 La url de la página web es https://dccursos.herokuapp.com/
 
@@ -59,5 +58,3 @@ La configuración del rubocop está diseñada para parecerse lo más posible a p
 * Para obtener el link de un video para usar en la app, se debe usar el "embed link" que se obtiene de youtube al pulsar "compartir".
 
 * Para ver el video de una clase se debe hacer click en show details.
-
-* Del sprint, faltó implementar las entidades ligadas en el perfil de usuario, y terminar del todo los permisos, tambien, añadir una forma de inscribir un usuario a un curso.
